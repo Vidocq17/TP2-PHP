@@ -8,15 +8,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $characterType = $_POST['mage'];
 
     $host = 'mysql:host=localhost:8889;dbname=TP2';
-    $username = 'root';
+    $usernameDB = 'root';
     $passwordDB = 'root';
+
+    $pdo = new PDO("mysql:host=localhost:8889;dbname=TP2", "root", "root");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if ($characterType == "warrior") {
         $character = new Warrior($characterName);
     } else if ($characterType == "mage") {
         $character = new Mage($characterName);
     } else {
-        die;
+        $error[] = "Classe de personnage non valide";
     }
 }
 
