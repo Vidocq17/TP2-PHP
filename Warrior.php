@@ -1,6 +1,7 @@
 <?php
 
-class Warrior // extends Perso 
+require 'Perso.php';
+class Warrior extends Perso 
 {
     private $name;
     private $life;
